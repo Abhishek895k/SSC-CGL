@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSC CGL</title>
     <style>
+
+#loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000; /* High z-index to appear above all other content */
+        }
+
+        .spinner {
+            border: 8px solid #f3f3f3; /* Light gray border */
+            border-top: 8px solid #007BFF; /* Blue border */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -15,6 +47,7 @@
             justify-content: center;
             height: 100vh;
             background-color: #f4f4f4;
+            user-select: none;
         }
 
         header {
@@ -174,6 +207,10 @@
     </style>
 </head>
 <body>
+
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
     <header>SSC CGL</header>
 
     <!-- Main Buttons -->
@@ -287,6 +324,11 @@
         document.getElementById('close-overlay-4').addEventListener('click', function () {
             document.getElementById('overlay-4').classList.remove('show');
             document.getElementById('overlay-2').classList.add('show');
+        });
+
+        window.addEventListener('load', function () {
+            // Hide the loader
+            document.getElementById('loader').style.display = 'none';
         });
     </script>
 </body>
