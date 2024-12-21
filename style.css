@@ -1,0 +1,137 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+header {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.btn {
+    padding: 20px;
+    border-radius: 50px;
+    border: 2px solid #007BFF;
+    background-color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 70%;
+    text-align: center;
+    box-sizing: border-box;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #007BFF;
+    color: white;
+    transform: translateY(-5px);
+}
+
+/* Overlay styles */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(173, 216, 230, 0.95);
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999;
+    padding-top: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.overlay.show {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.overlay-btns-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding-bottom: 50px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Hide scrollbar */
+.overlay-btns-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Buttons in the second overlay */
+.overlay-btns-container.second-overlay .btn {
+    width: 60%;
+    font-size: 1rem;
+    padding: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Cross button for first overlay */
+.close-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.close-btn:hover {
+    color: #007BFF;
+}
+
+/* Back button for second overlay */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1000;
+    font-weight: bold; /* Making the back button bold */
+}
+
+.back-btn:hover {
+    color: #007BFF;
+}
