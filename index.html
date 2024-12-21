@@ -1,222 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSC CGL</title>
-    <style>
-
-.btn {
-    outline: none; /* Removes the outline */
-}
-
-.btn:focus {
-    outline: none; /* Ensure no outline appears on focus */
-    box-shadow: none; /* Removes any box shadow effect */
-    border: none; /* Removes the focus border on mobile */
-    -webkit-tap-highlight-color: transparent; /* Removes tap highlight color on mobile devices */
-}
-
-        
-#loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000; /* High z-index to appear above all other content */
-        }
-
-        .spinner {
-            border: 8px solid #f3f3f3; /* Light gray border */
-            border-top: 8px solid #007BFF; /* Blue border */
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-            user-select: none;
-        }
-
-        header {
-            font-size: 3rem;
-            margin-bottom: 40px;
-            font-weight: bold;
-        }
-
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .btn {
-            padding: 20px;
-            border-radius: 50px;
-            border: 2px solid #007BFF;
-            background-color: #fff;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: 0.3s ease;
-            width: 70%;
-            text-align: center;
-            box-sizing: border-box;
-            height: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-        }
-
-        .btn:hover {
-            background-color: #007BFF;
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        /* Overlay styles */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(173, 216, 230, 0.95);
-            justify-content: flex-start;
-            align-items: center;
-            flex-direction: column;
-            z-index: 999;
-            padding-top: 20px;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .overlay.show {
-            display: flex;
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .overlay-btns-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
-            width: 100%;
-            max-width: 600px;
-            padding-bottom: 50px;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        /* Hide scrollbar */
-        .overlay-btns-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Cross button for first overlay */
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: #333;
-            font-size: 2rem;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        .close-btn:hover {
-            color: #007BFF;
-        }
-
-        /* Back button for second overlay */
-        .back-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: none;
-            border: none;
-            color: #333;
-            font-size: 2rem;
-            cursor: pointer;
-            z-index: 1000;
-            font-weight: bold; /* Making the back button bold */
-        }
-
-        .back-btn:hover {
-            color: #007BFF;
-        }
-
-        /* Add space above the first button in each overlay */
-        .overlay-btns-container .btn:first-child {
-            margin-top: 30px; /* Add space above the first button */
-        }
-
-        /* Style for the new black overlay */
-        .overlay-video {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .overlay-video iframe {
-            width: 80%;
-            height: 80%;
-        }
-
-        .close-video-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        .close-video-btn:hover {
-            color: #007BFF;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -238,40 +27,41 @@
         <button class="close-btn" id="close-overlay-1">&times;</button>
         <div class="overlay-btns-container">
             <button class="btn" id="number-system-btn">NUMBER SYSTEM</button>
-            <button class="btn">SIMPLIFICATION</button>
-            <button class="btn">SURDS & INDICES</button>
-            <button class="btn">ALGEBRA</button>
-            <button class="btn">QUADRATIC EQUATION</button>
-            <button class="btn">PERCENTAGE</button>
-            <button class="btn">RATIO & PROPORTION</button>
-            <button class="btn">PROFIT & LOSS</button>
-            <button class="btn">DISCOUNT</button>
-            <button class="btn">COMPOUND INTEREST</button>
-            <button class="btn">SIMPLE INTEREST</button>
-            <button class="btn">INSTALLMENT</button>
-            <button class="btn">TIME & WORK</button>
-            <button class="btn">PIPE & CISTERN</button>
-            <button class="btn">PARTNERSHIP</button>
-            <button class="btn">TIME, SPEED & DISTANCE</button>
-            <button class="btn">BOAT & STREAM</button>
-            <button class="btn">RACE</button>
-            <button class="btn">AVERAGE AGES PROBLEMS</button>
-            <button class="btn">MIXTURE & ALLIGATION</button>
-            <button class="btn">TRIGONOMETRY</button>
-            <button class="btn">HEIGHT & DISTANCE</button>
-            <button class="btn">MAXIMA & MINIMA</button>
-            <button class="btn">2D MENSURATION</button>
-            <button class="btn">3D MENSURATION</button>
-            <button class="btn">GEOMETRY</button>
-            <button class="btn">DI</button>
-            <button class="btn">PROBABILITY</button>
-            <button class="btn">DATA INTERPRETATION</button>
-            <button class="btn">PERMUTATION & COMBINATION</button>
-            <button class="btn">STATISTICS</button>
+            <button class="btn" id="simplification-btn">SIMPLIFICATION</button>
+            <button class="btn" id="surds_indices-btn">SURDS & INDICES</button>
+            <button class="btn" id="algebra-btn">ALGEBRA</button>
+            <button class="btn" id="quadratic_equation-btn">QUADRATIC EQUATION</button>
+            <button class="btn" id="percentage-btn">PERCENTAGE</button>
+            <button class="btn" id="ratio-btn">RATIO & PROPORTION</button>
+            <button class="btn" id="profit_loss-btn">PROFIT & LOSS</button>
+            <button class="btn" id="discount-btn">DISCOUNT</button>
+            <button class="btn" id="compound_interest-btn">COMPOUND INTEREST</button>
+            <button class="btn" id="simple_interest-btn">SIMPLE INTEREST</button>
+            <button class="btn" id="installment-btn">INSTALLMENT</button>
+            <button class="btn" id="time_work-btn">TIME & WORK</button>
+            <button class="btn" id="pipe_cistern-btn">PIPE & CISTERN</button>
+            <button class="btn" id="partnership-btn">PARTNERSHIP</button>
+            <button class="btn" id="time_distance-btn">TIME, SPEED & DISTANCE</button>
+            <button class="btn" id="boat_stream-btn">BOAT & STREAM</button>
+            <button class="btn" id="race-btn">RACE</button>
+            <button class="btn" id="average-btn">AVERAGE </button>
+            <button class="btn" id="ages_problems-btn">AGES PROBLEMS</button>
+            <button class="btn" id="mixture_alligation-btn">MIXTURE & ALLIGATION</button>
+            <button class="btn" id="trigonometry-btn">TRIGONOMETRY</button>
+            <button class="btn" id="height_distance-btn">HEIGHT & DISTANCE</button>
+            <button class="btn" id="maxima_minima-btn">MAXIMA & MINIMA</button>
+            <button class="btn" id="2d_mensuration-btn">2D MENSURATION</button>
+            <button class="btn" id="3d_mensuration-btn">3D MENSURATION</button>
+            <button class="btn" id="geometry-btn">GEOMETRY</button>
+            <button class="btn" id="di-btn">DI</button>
+            <button class="btn" id="probability-btn">PROBABILITY</button>
+            <button class="btn" id="di-btn">DATA INTERPRETATION</button>
+            <button class="btn" id="permutation_combination-btn">PERMUTATION & COMBINATION</button>
+            <button class="btn" id="statistics-btn">STATISTICS</button>
         </div>
     </div>
 
-    <!-- Second Overlay -->
+    <!--Second overlay for Number System-->
     <div id="overlay-2" class="overlay">
         <button class="back-btn" id="back-overlay-2">←</button>
         <div class="overlay-btns-container second-overlay">
@@ -295,53 +85,176 @@
         </div>
     </div>
 
-    <!-- Fourth Overlay for Video -->
-    <div id="overlay-4" class="overlay-video">
-        <button class="close-video-btn" id="close-overlay-4">&times;</button>
-        <iframe src="https://www.youtube.com/embed/EoEBrTwmy0g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <!--3rd overlay for Simplification-->
+    <div id="overlay-3" class="overlay">
+        <button class="back-btn" id="back-overlay-3">←</button>
+        <div class="overlay-btns-container third-overlay">
+            <button class="btn">Lecture 1</button>
+            <button class="btn">Lecture 2</button>
+            <button class="btn">Lecture 3</button>
+            <button class="btn">Lecture 4</button>
+            <button class="btn">Lecture 5</button>
+            <button class="btn">Lecture 6</button>
+            <button class="btn">Lecture 7</button>
+            
+           
+        </div>
     </div>
 
-    <script>
-        // Show first overlay
-        document.getElementById('maths-btn').addEventListener('click', function () {
-            document.getElementById('overlay-1').classList.add('show');
-        });
+     <!--4th overlay for Surds and indices-->
+     <div id="overlay-4" class="overlay">
+        <button class="back-btn" id="back-overlay-4">←</button>
+        <div class="overlay-btns-container fourth-overlay">
+            <button class="btn">Lecture 1</button>
+            <button class="btn">Lecture 2</button>
+            <button class="btn">Lecture 3</button>
+            <button class="btn">Lecture 4</button>
+            <button class="btn">Lecture 5</button>
+            <button class="btn">Lecture 6</button>
+           
+           
+        </div>
+    </div>
 
-        // Close first overlay
-        document.getElementById('close-overlay-1').addEventListener('click', function () {
-            document.getElementById('overlay-1').classList.remove('show');
-        });
+     <!--5th overlay on Algebra-->
+     <div id="overlay-5" class="overlay">
+        <button class="back-btn" id="back-overlay-5">←</button>
+        <div class="overlay-btns-container fifth-overlay">
+            <button class="btn">Lecture 1</button>
+            <button class="btn">Lecture 2</button>
+            <button class="btn">Lecture 3</button>
+            <button class="btn">Lecture 4</button>
+            <button class="btn">Lecture 5</button>
+            <button class="btn">Lecture 6</button>
+            <button class="btn">Lecture 7</button>
+            <button class="btn">Lecture 8</button>
+            <button class="btn">Lecture 9</button>
+            <button class="btn">Lecture 10</button>
+            <button class="btn">Lecture 11</button>
+            <button class="btn">Lecture 12</button>
+            <button class="btn">Lecture 13</button>
+            <button class="btn">Lecture 14</button>
+            <button class="btn">Lecture 15</button>
+            <button class="btn">Lecture 16</button>
+            <button class="btn">Lecture 17</button>
+            <button class="btn">Lecture 18</button>
+            <button class="btn">Lecture 19</button>
+           
+           
+        </div>
+    </div>
 
-        // Show second overlay when "NUMBER SYSTEM" button is clicked
-        document.getElementById('number-system-btn').addEventListener('click', function () {
-            document.getElementById('overlay-1').classList.remove('show');
-            document.getElementById('overlay-2').classList.add('show');
-        });
+    <!--6th overlay on Quadratic Equation-->
+    <div id="overlay-6" class="overlay">
+        <button class="back-btn" id="back-overlay-6">←</button>
+        <div class="overlay-btns-container sixth-overlay">
+            <button class="btn">Lecture 1</button>
+            <button class="btn">Lecture 2</button>
+           
+        </div>
+    </div>
 
-        // Close second overlay and return to the first overlay
-        document.getElementById('back-overlay-2').addEventListener('click', function () {
-            document.getElementById('overlay-2').classList.remove('show');
-            document.getElementById('overlay-1').classList.add('show');
-        });
+    <!-- 7th overlay on Percentage -->
+    <div id="overlay-7" class="overlay">
+        <button class="back-btn" id="back-overlay-7">←</button>
+        <div class="overlay-btns-container seventh-overlay">
+            <button class="btn">Lecture 1</button>
+            <button class="btn">Lecture 2</button>
+            <button class="btn">Lecture 3</button>
+            <button class="btn">Lecture 4</button>
+            <button class="btn">Lecture 5</button>
+            <button class="btn">Lecture 6</button>
+            <button class="btn">Lecture 7</button>
+            <button class="btn">Lecture 8</button>
+            <button class="btn">Lecture 9</button>
+            <button class="btn">Lecture 10</button>
+            <button class="btn">Lecture 11</button>
+           
+        </div>
+    </div>
 
-        // Show video overlay when "Lecture 1" is clicked
-        document.querySelector('.overlay-btns-container button').addEventListener('click', function () {
-            if (this.innerText === 'Lecture 1') {
-                document.getElementById('overlay-2').classList.remove('show');
-                document.getElementById('overlay-4').classList.add('show');
-            }
-        });
+    <!--8th overlay on Ratio-->
+    <div id="overlay-8" class="overlay">
+        <button class="back-btn" id="back-overlay-8">←</button>
+        <div class="overlay-btns-container eight-overlay">
+            <button class="btn">Lecture 1</button>
+            <button class="btn">Lecture 2</button>
+            <button class="btn">Lecture 3</button>
+            <button class="btn">Lecture 4</button>
+            
+        </div>
+    </div>
 
-        // Close video overlay
-        document.getElementById('close-overlay-4').addEventListener('click', function () {
-            document.getElementById('overlay-4').classList.remove('show');
-            document.getElementById('overlay-2').classList.add('show');
-        });
+    <!--9th overlay on Profit & loss-->
+    <div id="overlay-9" class="overlay">
+        <button class="back-btn" id="back-overlay-9">←</button>
+        <div class="overlay-btns-container fifth-overlay">
+            <button class="btn">Lecture 1</button>
+            <button class="btn">Lecture 2</button>
+            <button class="btn">Lecture 3</button>
+            <button class="btn">Lecture 4</button>
+            <button class="btn">Lecture 5</button>
+            <button class="btn">Lecture 6</button>
+            <button class="btn">Lecture 7</button>
+           
+        </div>
+    </div>
 
-        window.addEventListener('load', function () {
-            // Hide the loader
-            document.getElementById('loader').style.display = 'none';
-        });
-    </script>
+    <!--10th overlay on Discount-->
+    <div id="overlay-10" class="overlay">
+        <button class="back-btn" id="back-overlay-10">←</button>
+        <div class="overlay-btns-container fifth-overlay">
+            <button class="btn">Lecture 1</button>
+            <button class="btn">Lecture 2</button>
+            <button class="btn">Lecture 3</button>
+            <button class="btn">Lecture 4</button>
+            <button class="btn">Lecture 5</button>
+            <button class="btn">Lecture 6</button>
+            <button class="btn">Lecture 7</button>
+            <button class="btn">Lecture 8</button>
+            
+        </div>
+    </div>
+
+        <!--11th overlay on Compound Interest-->
+    <div id="overlay-11" class="overlay">
+        <button class="back-btn" id="back-overlay-11">←</button>
+        <div class="overlay-btns-container fifth-overlay">
+            <button class="btn">Lecture 1</button>
+            <button class="btn">Lecture 2</button>
+            <button class="btn">Lecture 3</button>
+            <button class="btn">Lecture 4</button>
+            <button class="btn">Lecture 5</button>
+            <button class="btn">Lecture 6</button>
+            
+        </div>
+    </div>
+
+    <!--12th overlay on Simple Interest-->
+    <div id="overlay-12" class="overlay">
+        <button class="back-btn" id="back-overlay-12">←</button>
+        <div class="overlay-btns-container fifth-overlay">
+            <button class="btn">Lecture 1</button>
+            <button class="btn">Lecture 2</button>
+            <button class="btn">Lecture 3</button>
+            <button class="btn">Lecture 4</button>
+            <button class="btn">Lecture 5</button>
+            <button class="btn">Lecture 6</button>
+            
+        </div>
+    </div>
+
+    <!--13th overlay on Installment-->
+    <div id="overlay-13" class="overlay">
+        <button class="back-btn" id="back-overlay-13">←</button>
+        <div class="overlay-btns-container fifth-overlay">
+            <button class="btn">Lecture 1</button>
+                      
+        </div>
+    </div>
+  
+    
+
+    <script src="script.js"></script>
 </body>
 </html>
